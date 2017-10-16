@@ -16,11 +16,14 @@ snps <- read.table("snp_position.txt", fill=TRUE, header=TRUE, sep="\t", strings
 ```
 loading the fang and snp files into my global environment
 ```{r}
-library(ggplot2)
+if (!require("dplyr")) install.packages("dplyr") 
 library(dplyr)
+if (!require("ggplot2")) install.packages("ggplot2") 
+library(ggplot2)
+
 
 ```
-loading up the packages needed for this assignment (assuming that these packages are alread installed to Rstudio)
+loading up the packages needed for this assignment (assuming that these packages are already installed to Rstudio though)
 ```{r}
 str(fang)
 str(snps)
@@ -151,9 +154,10 @@ merged_m_and_t <- merge(snps, df_m_and_t_groups, by.x=1, by.y=0)
 ```
 merging the maize and teosinte groups with the snps dataset
 ```{r}
+if (!require("reshape2")) install.packages("reshape2") 
 library(reshape2)
 ```
-loading the reshape2 package (assuming this package is already downloaded in Rstudio)
+loading the reshape2 package (assuming this package is already downloaded in Rstudio though)
 ```{r}
 melt_merged_m_and_t <- melt(merged_m_and_t)
 ```
@@ -221,9 +225,9 @@ arranging the dataframe based firstly on group, then by sample id
 ```{r}
 ggplot(arr_melt_plot2, aes(x = arr_melt_plot2$new)) +geom_bar(aes(fill=arr_melt_plot2$Group)) + 
   xlab("Heterozygosity (0 = NA, 1 = Homozygous, 2 = Heterozygous)") + 
-  ylab("SNPs")
+  ylab("SNPs") 
 ```
-Generating a plot that displays the heterozygosity present in the dataset from each of the different groups
+Generating a plot that displays the heterozygosity present in the dataset from each of the different groups (for some reason I was not able to set a the title for the legend as "Group", but it should be clear as to what the colors are referring to)
 
 Plot of my choice:
 ```{r}
