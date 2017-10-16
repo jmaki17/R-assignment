@@ -183,7 +183,7 @@ to determine the number of snps that are contributed by specific groups, the com
 
 
 ##Plot 2:
-I am reading this question to mean we're looking at the all the snips at 1 position of our choosing (like abph1.20 for instance)
+Plot of Heterozygosity
 ```{r}
 plot2_m_and_t <- maize_and_teosinte_groups[,-2]
 ```
